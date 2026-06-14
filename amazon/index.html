@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#" class="nav-logo" aria-label="Amazon home">
+      <svg viewBox="0 0 92 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="22" font-family="Arial Black,sans-serif" font-weight="900" font-size="22" height="28" fill="white">amazon</text>
+        <path d="M4 26 Q28 32 52 26" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <polygon points="50,23 53,27 47,27" fill="#FF9900"/>
+      </svg>
+    </a>
+    <a href="#" class="deliver-to">
+      <span class="top-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        Deliver to
+      </span>
+      <span class="bottom-line">Pakistan</span>
+    </a>
+    <div class="search-bar">
+      <select class="search-category" id="searchCategory">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Books</option>
+        <option>Clothing</option>
+        <option>Home &amp; Kitchen</option>
+        <option>Sports</option>
+        <option>Toys</option>
+        <option>Automotive</option>
+        <option>Beauty</option>
+      </select>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search Amazon"/>
+      <button class="search-btn" id="searchBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="lang-btn">
+        <svg viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg">
+          <rect width="22" height="15" fill="#B22234"/>
+          <rect y="1.15" width="22" height="1.15" fill="white"/>
+          <rect y="3.45" width="22" height="1.15" fill="white"/>
+          <rect y="5.75" width="22" height="1.15" fill="white"/>
+          <rect y="8.05" width="22" height="1.15" fill="white"/>
+          <rect y="10.35" width="22" height="1.15" fill="white"/>
+          <rect y="12.65" width="22" height="1.15" fill="white"/>
+          <rect width="8.8" height="8.05" fill="#3C3B6E"/>
+        </svg>
+        <span>EN</span>
+        <svg viewBox="0 0 10 6" fill="white"><path d="M0 0l5 6 5-6z"/></svg>
+      </a>
+      <div class="nav-account">
+        <a href="#" class="nav-btn account-btn" id="accountBtn">
+          <span class="top-line">Hello, sign in</span>
+          <span class="bottom-line">Account &amp; Lists
+            <svg viewBox="0 0 10 6" fill="white" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+          </span>
+        </a>
+        <div class="dropdown-menu" id="accountDropdown">
+          <div class="dropdown-cta"><button class="btn-signin">Sign in</button></div>
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Your Account</div>
+            <a href="#" class="dropdown-item">Account</a>
+            <a href="#" class="dropdown-item">Orders</a>
+            <a href="#" class="dropdown-item">Recommendations</a>
+            <a href="#" class="dropdown-item">Browsing History</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">Sell on Amazon</a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="nav-btn"><span class="top-line">Returns</span><span class="bottom-line">&amp; Orders</span></a>
+      <a href="/cart/cart.html" class="cart-btn">
+        <div class="cart-icon">
+          <svg viewBox="0 0 40 34" fill="none">
+            <path d="M2 2h4l5.5 18h18l4-12H10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="30" r="2.5" fill="white"/>
+            <circle cx="28" cy="30" r="2.5" fill="white"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <span class="cart-label">Cart</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- MOBILE SEARCH -->
+  <div class="mobile-search">
+    <div class="search-bar">
+      <select class="search-category">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Books</option>
+        <option>Clothing</option>
+      </select>
+      <input type="text" class="search-input" placeholder="Search Amazon"/>
+      <button class="search-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- SUBNAV -->
+  <nav class="subnav">
+    <a href="#" class="subnav-item bold" id="allMenuBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>All
+    </a>
+    <a href="#" class="subnav-item">Today's Deals</a>
+    <a href="#" class="subnav-item">Gift Cards</a>
+    <a href="#" class="subnav-item">Sell</a>
+    <a href="#" class="subnav-item">Registry</a>
+    <a href="#" class="subnav-item">Prime Video</a>
+    <a href="#" class="subnav-item">Customer Service</a>
+  </nav>
+
+  <!-- OVERLAY & SIDE MENU -->
+  <div class="overlay" id="overlay"></div>
+  <div class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span>Hello, sign in</span>
+      <button class="side-menu-close" id="closeSideMenu">✕</button>
+    </div>
+    <div class="side-section-title">Trending</div>
+    <a href="#" class="side-menu-item">Best Sellers
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">New Releases
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <div class="side-section-title">Shop by Department</div>
+    <a href="#" class="side-menu-item">Electronics
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Clothing &amp; Fashion
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Home &amp; Kitchen
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Sports &amp; Outdoors
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <div class="side-section-title">Digital Content</div>
+    <a href="#" class="side-menu-item">Prime Video
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Amazon Music
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Kindle Books
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <div class="side-section-title">Programs &amp; Features</div>
+    <a href="#" class="side-menu-item">Today's Deals
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Gift Cards &amp; Registry
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Amazon Business
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <div class="side-section-title">Settings</div>
+    <a href="#" class="side-menu-item">Account Settings
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a href="#" class="side-menu-item">Customer Service
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <!-- ========== HERO SLIDER ========== -->
+  <div class="hero-slider" id="heroSlider">
+    <div class="slide slide-1 active"
+         style="background-image: url('https://m.media-amazon.com/images/I/619geyiQI5L._SX3000_.jpg')"
+         onclick="openCatModal(0)"></div>
+    <div class="slide slide-2"
+         style="background-image: url('https://m.media-amazon.com/images/I/61Yx5-N155L._SX3000_.jpg')"
+         onclick="openCatModal(1)"></div>
+    <div class="slide slide-3"
+         style="background-image: url('https://m.media-amazon.com/images/I/71qcoYgEhzL._SX3000_.jpg')"
+         onclick="openCatModal(3)"></div>
+    <div class="slide slide-4"
+         style="background-image: url('https://m.media-amazon.com/images/I/71QcgptqadL._SX3000_.jpg')"
+         onclick="openCatModal(2)"></div>
+    <button class="slider-arrow prev" id="prevBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="slider-arrow next" id="nextBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="slider-dots" id="sliderDots">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+      <button class="dot" data-index="3"></button>
+    </div>
+  </div>
+
+  <!-- ========== CATEGORY SECTION ========== -->
+  <div class="page-body">
+    <div class="content-section">
+      <div class="section-grid" id="categoryGrid"></div>
+    </div>
+    <div style="height:40px;"></div>
+  </div>
+
+  <!-- ========== PRODUCT SLIDERS (original 2) ========== -->
+  <div id="prodSlidersWrap"></div>
+
+  <!-- ========== PROMO CARD GRID (4 cards) ========== -->
+  <div id="promoCardGrid"></div>
+
+  <!-- ========== EXTRA PRODUCT SLIDERS (2 more with 12 pics each) ========== -->
+  <div id="extraSlidersWrap"></div>
+
+  <!-- ========== PROMO CARD GRID 2 (4 cards) ========== -->
+  <div id="promoCardGrid2"></div>
+
+  <!-- ========== EXTRA PRODUCT SLIDERS 2 (2 more with 12 pics each) ========== -->
+  <div id="extraSlidersWrap2"></div>
+
+  <!-- ========== PERSONALIZED RECOMMENDATIONS ========== -->
+  <div class="personalized-section">
+    <p class="personalized-title">See personalized recommendations</p>
+    <a href="#" class="personalized-signin-btn">Sign in</a>
+    <p class="personalized-new">New customer? <a href="#" class="personalized-start">Start here.</a></p>
+  </div>
+
+  <!-- ========== PRODUCT MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-inner">
+        <div class="modal-img-side" id="modalImgSide">
+          <img id="modalMainImg" class="modal-product-img" src="" alt="Product">
+          <div class="modal-img-thumbs" id="modalThumbs"></div>
+        </div>
+        <div class="modal-info">
+          <h2 id="modalTitle"></h2>
+          <p class="modal-sub" id="modalSub"></p>
+          <div class="modal-stars">
+            <span class="stars" id="modalStars"></span>
+            <span class="modal-rating-count" id="modalRatingCount"></span>
+          </div>
+          <div class="modal-price-line">
+            <span class="modal-price-orig" id="modalOrigPrice"></span>
+            <div class="modal-price" id="modalPrice"></div>
+          </div>
+          <div class="modal-save" id="modalSave"></div>
+          <div class="modal-divider"></div>
+          <div id="modalFeatures"></div>
+          <div class="modal-actions">
+            <button class="btn-add-cart" id="modalAddCart">Add to Cart</button>
+            <button class="btn-buy-now">Buy Now</button>
+            <div class="modal-prime">✓ Free delivery with Prime</div>
+          </div>
+          <div class="modal-category-items" id="modalCatItems">
+            <h4 id="modalCatTitle"></h4>
+            <div class="modal-items-grid" id="modalItemsGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== POPUP CONTEXT MENU ========== -->
+  <div class="popup-menu" id="popupMenu">
+    <div class="popup-menu-header" id="popupMenuHeader">Quick Actions</div>
+    <button class="popup-menu-item" id="popupAddCart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      Add to Cart
+    </button>
+    <button class="popup-menu-item" id="popupViewDetails">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      View Details
+    </button>
+    <button class="popup-menu-item" id="popupWishlist">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+      </svg>
+      Add to Wish List
+    </button>
+    <button class="popup-menu-item" id="popupCompare">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+      </svg>
+      Compare Prices
+    </button>
+    <div class="popup-menu-divider"></div>
+    <button class="popup-menu-item popup-menu-item--share" id="popupShare">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+      Share Product
+    </button>
+  </div>
+  <!-- Popup backdrop -->
+  <div class="popup-backdrop" id="popupBackdrop"></div>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <a href="#" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </a>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+
+    <!-- Back to top bar -->
+    <div class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
+
+    <!-- Main 4-column links -->
+    <div class="footer-links-wrap">
+      <div class="footer-links-inner">
+        <div class="footer-col">
+          <h4>Get to Know Us</h4>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">About Amazon</a>
+          <a href="#">Investor Relations</a>
+          <a href="#">Amazon Devices</a>
+          <a href="#">Amazon Science</a>
+        </div>
+        <div class="footer-col">
+          <h4>Make Money with Us</h4>
+          <a href="#">Sell products on Amazon</a>
+          <a href="#">Sell on Amazon Business</a>
+          <a href="#">Sell apps on Amazon</a>
+          <a href="#">Become an Affiliate</a>
+          <a href="#">Advertise Your Products</a>
+          <a href="#">Self-Publish with Us</a>
+          <a href="#">Host an Amazon Hub</a>
+          <a href="#">› See More Make Money with Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Amazon Payment Products</h4>
+          <a href="#">Amazon Business Card</a>
+          <a href="#">Shop with Points</a>
+          <a href="#">Reload Your Balance</a>
+          <a href="#">Amazon Currency Converter</a>
+        </div>
+        <div class="footer-col">
+          <h4>Let Us Help You</h4>
+          <a href="#">Amazon and COVID-19</a>
+          <a href="#">Your Account</a>
+          <a href="#">Your Orders</a>
+          <a href="#">Shipping Rates &amp; Policies</a>
+          <a href="#">Returns &amp; Replacements</a>
+          <a href="#">Manage Your Content and Devices</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo + selectors bar -->
+    <div class="footer-logo-bar">
+      <div class="footer-logo-bar-inner">
+        <div class="footer-amazon-logo">
+          <svg width="80" height="24" viewBox="0 0 110 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="26" font-family="Arial Black,sans-serif" font-weight="900" font-size="26" fill="white">amazon</text>
+            <path d="M6 30 Q30 38 58 30" stroke="#FF9900" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="footer-selectors">
+          <button class="footer-selector-btn">🌐 English</button>
+          <button class="footer-selector-btn">PKR &nbsp;Pakistani Rupee</button>
+          <button class="footer-selector-btn">🇺🇸 United States</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsidiary grid -->
+    <div class="footer-sub-wrap">
+      <div class="footer-sub-grid">
+        <div class="footer-sub-item"><strong>Amazon Music</strong><span>Stream millions of songs</span></div>
+        <div class="footer-sub-item"><strong>Amazon Ads</strong><span>Reach customers wherever they spend their time</span></div>
+        <div class="footer-sub-item"><strong>6pm</strong><span>Score deals on fashion brands</span></div>
+        <div class="footer-sub-item"><strong>AbeBooks</strong><span>Books, art &amp; collectibles</span></div>
+        <div class="footer-sub-item"><strong>ACX</strong><span>Audiobook Publishing Made Easy</span></div>
+        <div class="footer-sub-item"><strong>Sell on Amazon</strong><span>Start a Selling Account</span></div>
+        <div class="footer-sub-item"><strong>Veeqo</strong><span>Shipping Software Inventory Management</span></div>
+
+        <div class="footer-sub-item"><strong>Amazon Business</strong><span>Everything For Your Business</span></div>
+        <div class="footer-sub-item"><strong>AmazonGlobal</strong><span>Ship Orders Internationally</span></div>
+        <div class="footer-sub-item"><strong>Amazon Web Services</strong><span>Scalable Cloud Computing Services</span></div>
+        <div class="footer-sub-item"><strong>Audible</strong><span>Listen to Books &amp; Original Audio Performances</span></div>
+        <div class="footer-sub-item"><strong>Box Office Mojo</strong><span>Find Movie Box Office Data</span></div>
+        <div class="footer-sub-item"><strong>Goodreads</strong><span>Book reviews &amp; recommendations</span></div>
+        <div class="footer-sub-item"><strong>IMDb</strong><span>Movies, TV &amp; Celebrities</span></div>
+
+        <div class="footer-sub-item"><strong>IMDbPro</strong><span>Get Info Entertainment Professionals Need</span></div>
+        <div class="footer-sub-item"><strong>Kindle Direct Publishing</strong><span>Indie Digital &amp; Print Publishing Made Easy</span></div>
+        <div class="footer-sub-item"><strong>Prime Video Direct</strong><span>Video Distribution Made Easy</span></div>
+        <div class="footer-sub-item"><strong>Shopbop</strong><span>Designer Fashion Brands</span></div>
+        <div class="footer-sub-item"><strong>Woot!</strong><span>Deals and Shenanigans</span></div>
+        <div class="footer-sub-item"><strong>Zappos</strong><span>Shoes &amp; Clothing</span></div>
+        <div class="footer-sub-item"><strong>Ring</strong><span>Smart Home Security Systems</span></div>
+
+        <div class="footer-sub-item"><strong>eero WiFi</strong><span>Stream 4K Video in Every Room</span></div>
+        <div class="footer-sub-item"><strong>Blink</strong><span>Smart Security for Every Home</span></div>
+        <div class="footer-sub-item"><strong>Neighbors App</strong><span>Real-Time Crime &amp; Safety Alerts</span></div>
+        <div class="footer-sub-item"><strong>PillPack</strong><span>Pharmacy Simplified</span></div>
+      </div>
+    </div>
+
+    <!-- Legal bottom -->
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="#">Conditions of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Consumer Health Data Privacy Disclosure</a>
+        <a href="#">Your Ads Privacy Choices</a>
+      </div>
+      <p class="footer-legal-copy">© 1996-<span id="footerYear"></span>, Amazon.com, Inc. or its affiliates</p>
+    </div>
+
+  </footer>
+
+</body>
+</html>
